@@ -48,3 +48,7 @@ class LocalClient(object):
             return {}
         else:
             return data
+
+    def get_tokens(self) -> dict:
+        data = self.s.get(self._url("/entitlements/v1/token"), verify=ssl.CERT_NONE)
+        return json.loads(data.content)
